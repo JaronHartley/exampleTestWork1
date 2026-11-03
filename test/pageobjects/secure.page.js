@@ -11,6 +11,9 @@ class SecurePage extends Page {
     get flashAlert () {
         return $('//span[@class="title"]');
     }
+    get productAlert () {
+        return $('//a[@aria-label="Cart, 1 items"]')
+    }
 }
 
 export default new SecurePage();

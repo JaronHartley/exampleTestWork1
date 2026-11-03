@@ -1,6 +1,8 @@
 import { expect } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
+import Products from '../pageobjects/products.page.js'
+import securePage from '../pageobjects/secure.page.js'
 
 describe('My Login application', () => {
     it('should login with valid credentials', async () => {
@@ -10,6 +12,9 @@ describe('My Login application', () => {
             await LoginPage.login(LoginPage.credentials.users[i], LoginPage.credentials.password)
             await expect(SecurePage.flashAlert).toBeExisting()
             await expect(SecurePage.flashAlert).toHaveText(expect.stringContaining('Products'))
+            await Products.addToCart("backpack")
+            await expect(SecurePage.productAlert).toBeExisting()
+            await Products.empty()
             await LoginPage.logout()
             await expect(LoginPage.inputUsername).toBeExisting()
 
