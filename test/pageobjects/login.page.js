@@ -24,7 +24,7 @@ class LoginPage extends Page {
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
-    username = "standard_user"
+    users = ["standard_user", "problem_user", "error_user", "visual_user"]
     password = "secret_sauce"
     
     async login (username, password) {
